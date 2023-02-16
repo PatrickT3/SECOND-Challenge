@@ -80,7 +80,7 @@ const Sub = () => {
             <input className="btn-form" type="password" placeholder='Comfirm your password' 
             value={senhaConf} onChange={(e) => [setSenhaConf(e.target.value), setError("")]} />
           </label>
-          <button type="submit"className="btn-button">Register Noww</button>
+          <button type="submit"className="btn-button">Register Now</button>
         </form>
       </div>
       <div className="img-d">
