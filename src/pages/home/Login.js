@@ -20,6 +20,7 @@ const Login = () => {
   const [senha, setSenha] = useState("");
   const [error, setError] = useState("");
   const [ativo, setAtivo] = useState(false);
+  const [ativoCad, setAtivoCad] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -41,10 +42,13 @@ const Login = () => {
   const anime = () => {
     setAtivo(true);
   }
+  const anime2 = () => {
+    setAtivoCad(true);
+  }
   return (
     <div className="body-ls-login">
       <img src={pess} alt="pessoa" className="btnz" id={ativo === false?"btnz1":"btnz-1"}/>
-      <img src={cad} alt="cadeado" className="btnz" id={ativo === false?"btnz2":"btnz-2"}/>
+      <img src={cad} alt="cadeado" className="btnz" id={ativoCad === false?"btnz2":"btnz-2"}/>
       <div className="form-e-login">
         <h1 className="titulo-login">Welcome,</h1>
         <p className="sub-titulo-login">To continue browsing safely, log in to the network.</p>
@@ -58,7 +62,7 @@ const Login = () => {
           <label >
             <input className={!error? "btn-form-login":"erro-btn"} type="password" placeholder='password' 
             value={senha} onChange={(e) => [setSenha(e.target.value), setError("")]} 
-            onClick={anime}/>
+            onClick={anime2}/>
           </label>
           {error && <div className="errou-login">{error}</div>}
           <button type="submit" className="btn-button-login" onClick={anime}>Log in</button>

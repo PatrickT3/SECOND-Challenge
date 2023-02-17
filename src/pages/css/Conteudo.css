@@ -115,3 +115,9 @@
     text-align: right;
     margin-top: 0;
 }
+.link-login{
+    text-decoration: none;
+}
+.link-login:visited{
+    color: black;
+}

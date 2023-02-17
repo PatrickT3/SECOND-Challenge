@@ -80,8 +80,10 @@ const Conteudo = () => {
         </div>
         <div className="logout">
           <Link className="img-logo" to="https://www.youtube.com/watch?v=ZNC-RNE0sdc" target="_blank"><img src={logoC} alt="logoCompass" /></Link>
-          <img src={seta} alt="setinha" className="img-seta"/>
-          <p>Logout</p>
+          <Link to="/login" className="link-login">
+            <img src={seta} alt="setinha" className="img-seta"/>
+            <p>Logout</p>
+          </Link>          
         </div>
       </header>
     </div>
