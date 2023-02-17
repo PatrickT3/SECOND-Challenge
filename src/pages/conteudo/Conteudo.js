@@ -1,8 +1,11 @@
+//hook custom
+import useAuth from "../../hooks/useAuth";
 //import style
 import "../css/Conteudo.css";
 import {useEffect,useState} from "react";
 
 const Conteudo = () => {
+  const  email  = useAuth();
   const [horaAtual, setHoraAtual] = useState('');
   const [dayAtual,setDayAtual] = useState('');
 
@@ -32,6 +35,11 @@ const Conteudo = () => {
     
     return () => clearInterval(days);
   }, []);
+  
+  const usersStorage = JSON.parse(localStorage.getItem("users_bd"));
+  const hasUser = usersStorage?.filter((user) => user.email === email["user"]["email"]);
+  console.log(hasUser[0]["city"]);
+  
 
   return (
     <div className="div-princ">
@@ -44,7 +52,7 @@ const Conteudo = () => {
             <span className="class-hour">{horaAtual}</span>
             <span className="class-day">{dayAtual}</span>
         </div>
-        <div className="temp"></div>
+        <div className="temp">patrick</div>
         <div className="logout"></div>
       </header>
     </div>
