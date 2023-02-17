@@ -2,6 +2,7 @@
     color: rgba(224, 224, 224, 1);
     height: 1080px;
     width: 1920px;
+    margin: 0 auto;
     background: linear-gradient(180deg, #33383D 0%, #1C1D20 100%);
     display: flex;
 }

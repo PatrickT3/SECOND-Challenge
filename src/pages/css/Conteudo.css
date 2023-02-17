@@ -58,3 +58,60 @@
     line-height: 20px;
     letter-spacing: 0em;
 }
+.class-temp{
+    margin-left: 300px;
+}
+.city-c{
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-family: Mulish;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: center;
+}
+.num-temp{
+    font-family: Mulish;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 60px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin-top: 0;
+}
+.part-baixo{
+    justify-content: space-between;
+    display: flex;
+}
+.part-baixo img{
+    height: 18px;
+    width: 30px;
+    margin-top: 25px;
+}
+.logout{
+    display: flex;
+    flex-direction: column;
+    margin-left: 350px;
+}
+.img-logo{
+    height: 50px;
+    width: 176px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.img-seta{
+    height: 20px;
+    width: 20px;
+    margin-left: 150px;
+    cursor: pointer;
+}
+.logout p{
+    font-family: Mulish;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: right;
+    margin-top: 0;
+}
