@@ -4,6 +4,7 @@ import useAuth from "../../hooks/useAuth";
 import "../css/Conteudo.css";
 import {useEffect,useState} from "react";
 // img
+import bolona from "../../img/Group 5 1.svg"
 import nuvm from "../../img/Vector (2).svg";
 import logoC from "../../img/Type=Colored positive 1.svg";
 import seta from "../../img/Vector (3).svg";
@@ -160,6 +161,7 @@ const Conteudo = () => {
   }
   return (
     <div className="div-princ">
+      <img src={bolona} alt="bola da logo" className="bolaLogo"/>
       <header className="cab">
         <div className="banner">
           <h1 className="banner-tit">Weekly Planner </h1>
