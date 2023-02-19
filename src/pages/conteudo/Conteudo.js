@@ -17,6 +17,14 @@ const Conteudo = () => {
   const [chenge, setChange] = useState('');
   const cidad = "Oriximiná";
   const [activeButton, setActiveButton] = useState(null);
+  const [listMonday, setListMonday] = useState([]);
+  const [listTuesday, setListTuesday] = useState([]);
+  const [listWednesday, setListWednesday] = useState([]);
+  const [listThursday, setListThursday] = useState([]);
+  const [listFriday, setListFriday] = useState([]);
+  const [listSaturday, setListSaturday] = useState([]);
+  const [listSunday, setListSunday] = useState([]);
+
 
   // API TEMP
   useEffect(() => {
@@ -59,15 +67,47 @@ const Conteudo = () => {
     return () => clearInterval(days);
   }, []);
 
+
   // Funções do form
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     const formData = new FormData(e.target);
-    
     const pHor = formData.get('horario');
-    console.log(pHor);
-    alert("enviado");
-  }
+    const task = formData.get('tesk');
+    addNewUser(pHor, task);
+    e.target.reset();
+    alert('Success!');
+  };
+  const addNewUser = (horario, tesk) => {
+    const newUser = { id: Date.now(), h: horario, t: tesk };
+    switch (chenge) {
+      case "Monday":
+        setListMonday([...listMonday, newUser]);
+        break;
+      case "Tuesday":
+        setListTuesday([...listTuesday, newUser]);
+        break;
+      case "Wednesday":
+        setListWednesday([...listWednesday, newUser]);
+        break;
+      case "Thursday":
+        setListThursday([...listThursday, newUser]);
+        break;
+      case "Friday":
+        setListFriday([...listFriday, newUser]);
+        break;
+      case "Saturday":
+        setListSaturday([...listSaturday, newUser]);
+        break;
+      case "Sunday":
+        setListSunday([...listSunday, newUser]);
+        break;
+      default:
+        break;
+    }
+  };
+  
+  
   function handleChange(event) {
     setChange(event.target.value);
   }
@@ -79,6 +119,7 @@ const Conteudo = () => {
   const handleClick = (event) => {
     const clickedButton = event.target;
     setActiveButton(clickedButton);
+    setChange(event.target.value);
   };
 
   const getButtonStyle = (buttonValue) => {
@@ -90,6 +131,33 @@ const Conteudo = () => {
     }
     return {};
   };
+  const clearList = (day) => {
+    switch (day) {
+      case "Monday":
+        setListMonday([]);
+        break;
+      case "Tuesday":
+        setListTuesday([]);
+        break;
+      case "Wednesday":
+        setListWednesday([]);
+        break;
+      case "Thursday":
+        setListThursday([]);
+        break;
+      case "Friday":
+        setListFriday([]);
+        break;
+      case "Saturday":
+        setListSaturday([]);
+        break;
+      case "Sunday":
+        setListSunday([]);
+        break;
+      default:
+        break;
+    }
+  }
   return (
     <div className="div-princ">
       <header className="cab">
@@ -139,7 +207,7 @@ const Conteudo = () => {
             <input type="text" name="horario" className="input-hora" placeholder="01h 32m"></input>
             <div className="class-btns">
               <button type="submit" className="btn-add">+ Add to calendar</button>
-              <button type="button" className="btn-del">- Delet all</button>
+              <button type="button" className="btn-del" onClick={() => clearList(chenge)}>- Delet all</button>
             </div>
           </form>
         </section>
@@ -167,6 +235,61 @@ const Conteudo = () => {
               Sunday
             </button>
           </form>
+        </section>
+        <section>
+          <p className="caixa" style={{backgroundColor:'rgba(255, 255, 255, 1)'}}>Time</p>
+        </section>
+        <section className="classDash">
+            {chenge === "Monday" && (
+              <ul>
+                {listMonday.map((item) => (
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'red'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                ))}
+              </ul>
+            )}
+            {chenge === "Tuesday" && (
+              <ul>
+                {listTuesday.map((item) => (
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 128, 0, 1)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                ))}
+              </ul>
+            )}
+            {chenge === "Wednesday" && (
+              <ul>
+                {listWednesday.map((item) => (
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 206, 0, 1)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                ))}
+              </ul>
+            )}
+            {chenge === "Thursday" && (
+              <ul>
+                {listThursday.map((item) => (
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 0, 36, 0.7)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                ))}
+              </ul>
+            )}
+            {chenge === "Friday" && (
+              <ul>
+                {listFriday.map((item) => (
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 0, 36, 0.7)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                ))}
+              </ul>
+            )}
+            {chenge === "Saturday" && (
+              <ul>
+                {listSaturday.map((item) => (
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 206, 0, 0.7)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                ))}
+              </ul>
+            )}
+            {chenge === "Sunday" && (
+              <ul>
+                {listSunday.map((item) => (
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 0, 36, 0.5)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                ))}
+              </ul>
+            )}
+            
         </section>
       </main>
     </div>
