@@ -77,37 +77,59 @@ const Conteudo = () => {
     const task = formData.get('tesk');
     addNewUser(pHor, task);
     e.target.reset();
-    alert('Success!');
   };
+  function isDuplicatedEntry(list, newUser) {
+    return list.some((entry) => entry.h === newUser.h);
+  }
   const addNewUser = (horario, tesk) => {
     const newUser = { id: Date.now(), h: horario, t: tesk };
     switch (chenge) {
       case "Monday":
+        if (isDuplicatedEntry(listMonday, newUser)) {
+          return alert('Horário já ocupado');
+        }
         setListMonday([...listMonday, newUser]);
         break;
       case "Tuesday":
+        if (isDuplicatedEntry(listTuesday, newUser)) {
+          return alert('Horário já ocupado');
+        }
         setListTuesday([...listTuesday, newUser]);
         break;
       case "Wednesday":
+        if (isDuplicatedEntry(listWednesday, newUser)) {
+          return alert('Horário já ocupado');
+        }
         setListWednesday([...listWednesday, newUser]);
         break;
       case "Thursday":
+        if (isDuplicatedEntry(listThursday, newUser)) {
+          return alert('Horário já ocupado');
+        }
         setListThursday([...listThursday, newUser]);
         break;
       case "Friday":
+        if (isDuplicatedEntry(listFriday, newUser)) {
+          return alert('Horário já ocupado');
+        }
         setListFriday([...listFriday, newUser]);
         break;
       case "Saturday":
+        if (isDuplicatedEntry(listSaturday, newUser)) {
+          return alert('Horário já ocupado');
+        }
         setListSaturday([...listSaturday, newUser]);
         break;
       case "Sunday":
+        if (isDuplicatedEntry(listSunday, newUser)) {
+          return alert('Horário já ocupado');
+        }
         setListSunday([...listSunday, newUser]);
         break;
       default:
         break;
     }
-  };
-  
+  }
   
   function handleChange(event) {
     setChange(event.target.value);
@@ -245,49 +267,49 @@ const Conteudo = () => {
             {chenge === "Monday" && (
               <ul>
                 {listMonday.map((item) => (
-                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'red'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'red'}}> {item.h}</p>  <p className="caixa-2" style={{background: 'linear-gradient(to right, #FF4B2B 5%, rgba(228, 240, 248, 0.42) 5%)'}}>{item.t}</p></li>
                 ))}
               </ul>
             )}
             {chenge === "Tuesday" && (
               <ul>
                 {listTuesday.map((item) => (
-                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 128, 0, 1)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 128, 0, 1)'}}> {item.h}</p>  <p className="caixa-2" style={{background: 'linear-gradient(to right, rgba(255, 128, 0, 1) 5%, rgba(228, 240, 248, 0.42) 5%)'}}>{item.t}</p></li>
                 ))}
               </ul>
             )}
             {chenge === "Wednesday" && (
               <ul>
                 {listWednesday.map((item) => (
-                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 206, 0, 1)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 206, 0, 1)'}}> {item.h}</p>  <p className="caixa-2" style={{background: 'linear-gradient(to right, rgba(255, 206, 0, 1) 5%, rgba(228, 240, 248, 0.42) 5%)'}}>{item.t}</p></li>
                 ))}
               </ul>
             )}
             {chenge === "Thursday" && (
               <ul>
                 {listThursday.map((item) => (
-                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 0, 36, 0.7)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 0, 36, 0.7)'}}> {item.h}</p>  <p className="caixa-2" style={{background: 'linear-gradient(to right, rgba(255, 0, 36, 0.7) 5%, rgba(228, 240, 248, 0.42) 5%)'}}>{item.t}</p></li>
                 ))}
               </ul>
             )}
             {chenge === "Friday" && (
               <ul>
                 {listFriday.map((item) => (
-                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 0, 36, 0.7)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 128, 0, 0.7)'}}> {item.h}</p>  <p className="caixa-2" style={{background: 'linear-gradient(to right, rgba(255, 128, 0, 0.7) 5%, rgba(228, 240, 248, 0.42) 5%)'}}>{item.t}</p></li>
                 ))}
               </ul>
             )}
             {chenge === "Saturday" && (
               <ul>
                 {listSaturday.map((item) => (
-                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 206, 0, 0.7)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 206, 0, 0.7)'}}> {item.h}</p>  <p className="caixa-2" style={{background: 'linear-gradient(to right, rgba(255, 206, 0, 0.7) 5%, rgba(228, 240, 248, 0.42) 5%)'}}>{item.t}</p></li>
                 ))}
               </ul>
             )}
             {chenge === "Sunday" && (
               <ul>
                 {listSunday.map((item) => (
-                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 0, 36, 0.5)'}}> {item.h}</p>  <p className="caixa-2">{item.t}</p></li>
+                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 0, 36, 0.5)'}}> {item.h}</p>  <p className="caixa-2" style={{background: 'linear-gradient(to right, rgba(255, 0, 36, 0.5) 5%, rgba(228, 240, 248, 0.42) 5%)'}}>{item.t}</p></li>
                 ))}
               </ul>
             )}
