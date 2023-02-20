@@ -138,8 +138,9 @@
     margin-top: 650px;
 }
 .links{
+    position: absolute;
     width: 40px;
-    margin-top: 220px;
+    margin-top: 900px;
     margin-left: 435px;
     font-size: 30px;
     text-decoration: none;

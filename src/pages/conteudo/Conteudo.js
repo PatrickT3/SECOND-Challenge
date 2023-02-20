@@ -1,5 +1,5 @@
 //hook custom
-import useAuth from "../../hooks/useAuth";
+//import useAuth from "../../hooks/useAuth";
 //import style
 import "../css/Conteudo.css";
 import {useEffect,useState} from "react";
@@ -12,11 +12,15 @@ import seta from "../../img/Vector (3).svg";
 import {Link} from "react-router-dom";
 
 const Conteudo = () => {
+  //const { user } = useAuth();
+  //codigo a revisar
+  //console.log(user); -> objeto exibido no console mas tem esse erro
+  //Uncaught TypeError: Cannot read properties of undefined (reading 'city')
+  //const cidad = user['city'].toString();
   const [horaAtual, setHoraAtual] = useState('');
   const [dayAtual,setDayAtual] = useState('');
   const [dadosTemp, setDadosTemp] = useState(null);
   const [chenge, setChange] = useState('');
-  const cidad = "Oriximiná";
   const [activeButton, setActiveButton] = useState(null);
   const [listMonday, setListMonday] = useState([]);
   const [listTuesday, setListTuesday] = useState([]);
@@ -30,7 +34,7 @@ const Conteudo = () => {
   // API TEMP
   useEffect(() => {
     async function fetchDados() {
-      const cityy = cidad;
+      const cityy = "Belém";
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURI(cityy)}&units=metric&appid=6c3ad536f4936801eb863a79db679f51`;
       const response = await fetch(url);
       const json = await response.json();
@@ -218,7 +222,7 @@ const Conteudo = () => {
       <main>
         <section className="sessao-form">
           <form onSubmit={handleSubmit} className="flex-form">
-            <input type="text" name="tesk" className="input-tesk" placeholder="Task or issue"></input>
+            <input type="text" name="tesk" className="input-tesk" placeholder="Task or issue" maxLength="35" required></input>
             <select id="daysOfWeek" onChange={handleChange} className="input-sel" defaultValue="">
               <option value="Monday">Monday</option>
               <option value="Tuesday">Tuesday</option>
@@ -288,7 +292,10 @@ const Conteudo = () => {
             {chenge === "Thursday" && (
               <ul>
                 {listThursday.map((item) => (
-                  <li key={item.id}><p className="caixa" style={{backgroundColor: 'rgba(255, 0, 36, 0.7)'}}> {item.h}</p>  <p className="caixa-2" style={{background: 'linear-gradient(to right, rgba(255, 0, 36, 0.7) 5%, rgba(228, 240, 248, 0.42) 5%)'}}>{item.t}</p></li>
+                  <li key={item.id}>
+                    <p className="caixa" style={{backgroundColor: 'rgba(255, 0, 36, 0.7)'}}> {item.h}</p>  
+                    <p className="caixa-2" 
+                    style={{background: 'linear-gradient(to right, rgba(255, 0, 36, 0.7) 5%, rgba(228, 240, 248, 0.42) 5%)'}}>{item.t}</p></li>
                 ))}
               </ul>
             )}
